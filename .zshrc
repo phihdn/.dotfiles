@@ -1,18 +1,22 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/go/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/phi/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="spaceship"
 SPACESHIP_GIT_SYMBOL=" "
+SPACESHIP_PACKAGE_SYMBOL=" "
+SPACESHIP_DOCKER_SYMBOL=" "
 SPACESHIP_GOLANG_SYMBOL="ﳑ "
 SPACESHIP_DOCKER_SYMBOL=" "
+SPACESHIP_AWS_SYMBOL="  "
+
+DEFAULT_USER=`whoami`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -109,9 +113,24 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# GO
+export GOPATH="$HOME/go"
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
-alias vim="nvim"
-alias oldvim="\vim"
+# Local config
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
+# aliases
+if [ -f ~/.zsh/aliases ]; then
+  source ~/.zsh/aliases
+fi
+
+# my mac mini
+if [[ "${HOST}" == "phis-mac-mini.lan" ]]
+then
+  source ~/.zsh/zshrc.macmini
+fi
