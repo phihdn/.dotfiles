@@ -1,0 +1,3 @@
+alias vim="nvim"
+alias oldvim="\vim"
+alias dotfiles='/usr/bin/git --git-dir=/Users/phihdn/.dotfiles/ --work-tree=/Users/phihdn'
