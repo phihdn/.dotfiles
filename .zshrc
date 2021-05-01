@@ -134,3 +134,9 @@ if [[ "${HOST}" == "phis-mac-mini.lan" ]]
 then
   source ~/.zsh/zshrc.macmini
 fi
+
+# phi-7310 
+if [[ "${HOST}" == "phi-7310" ]]
+then
+  source ~/.zsh/zshrc.phi7310
+fi
